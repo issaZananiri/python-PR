@@ -1,0 +1,15 @@
+def mod3(number):
+ x=list()
+ i=0
+ for x in range(i,number):
+   b=x%3
+   if b==0:
+        print(x)
+   else :
+        pass
+numb=input("Enter number :")
+mod3(numb)
+
+        
+    
+

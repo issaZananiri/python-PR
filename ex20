@@ -1,0 +1,14 @@
+def diff_avg(a,b,length):
+ i=sum(a)
+ j=sum(b)
+ x=i/length
+ z=j/length
+ print(x)
+ print(z)
+ print(x-z)
+
+
+al=[5,4,5,20]
+bl=[4,4,4,4]
+length=4
+diff_avg(al,bl,length)

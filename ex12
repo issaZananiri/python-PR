@@ -1,0 +1,3 @@
+fil=open("dest.txt","r")
+contents=fil.read()
+print(contents)

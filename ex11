@@ -1,0 +1,5 @@
+import shutil
+
+src = 'src.txt'
+dst = 'dest.txt'
+shutil.copy(src, dst)

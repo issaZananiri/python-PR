@@ -1,0 +1,10 @@
+# -*- coding: cp1252 -*-
+sentence="Hello, my name is Inigo Montoya "
+
+
+print(sentence[0:5])
+print(sentence[6:15])
+a=sentence[0:1]+sentence[3:4]+sentence[4]+" "+sentence[8]+sentence[10]+sentence[12]+ " "+sentence[16]+sentence[3]+sentence[20]+sentence[28]+sentence[24]+sentence[26]+sentence[25]+sentence[30]
+b=sentence[3:4]+sentence[4]+" "+sentence[8]+sentence[10]+sentence[12]+ " "+sentence[16]+sentence[3]
+print(a)
+print(b)

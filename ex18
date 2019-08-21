@@ -1,0 +1,7 @@
+import string
+import random
+def gen(size = 8, chars=string.ascii_letters + string.digits + string.punctuation):
+	return ''.join(random.choice(chars) for i in range(size))
+
+z=input('How many characters ?')
+print(gen(z))

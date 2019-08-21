@@ -1,0 +1,33 @@
+f = open("test1.txt", "r")
+h= open("sol.txt", "w")
+
+numlist=[]
+i=0
+
+numlist1=f.readline()
+for i in f:
+ numlist=numlist1.split()
+ if numlist[i]=='*':
+             result=numlist[i-1] * numlist[i+1]
+             print(result)
+             h.write(result)
+             
+ elif  numlist[i]=='-':
+             result=numlist[i-1] - numlist[i+1]
+             print(result)
+             h.write(result)
+             
+ elif  numlist[i]=='+':
+             result=numlist[i-1] + numlist[i+1]
+             print(result)
+             h.write(result)
+             
+ elif  numlist[i]=='/':
+             result=numlist[i-1]/numlist[i+1]
+             print(result)
+             h.write(result)
+ else :print("wrong")
+             
+
+        
+        

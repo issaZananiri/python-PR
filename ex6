@@ -1,0 +1,14 @@
+a=int(input("1st number :"))
+b=int(input("2st number :"))
+c=int(input("3st number :"))
+d=int(input("4st number :"))
+e=int(input("5st number :"))
+list1=[a,b,c,d,e]
+print(' '.join(map(str, list1))) 
+print(a,b,c,d,e)
+print(a+b+c+d+e)
+
+
+
+    
+
