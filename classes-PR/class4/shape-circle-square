@@ -1,0 +1,41 @@
+
+from abc import ABC, abstractmethod
+
+
+class shape(ABC):
+    @abstractmethod
+    def area(self): pass
+
+    @abstractmethod
+    def perimeter(self): pass
+
+
+class square(shape):
+    def __init__(self, side):
+        self.__side = side
+
+    def area(self):
+        return self.__side * self.__side
+
+    def perimeter(self):
+        return 4 * self.__side
+
+class circle(shape):
+    
+   def __init__(self, side):
+        self.__side = side
+   def area(self):
+        return 3.18*self.__side * self.__side
+   def perimeter(self):
+        return 2 *3.18* self.__side
+
+square = square(5)
+circle=circle(6)
+print("Area of square:")
+print(square.area())
+print("perimeter of square:")
+print(square.perimeter())
+print("Area of circle:")
+print(circle.area())
+print("perimeter of circle:")
+print(circle.perimeter())

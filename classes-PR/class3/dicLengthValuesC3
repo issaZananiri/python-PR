@@ -1,0 +1,7 @@
+
+
+def DicNums(sentence):
+  sentenc=sentence.split()
+  dic={i:len(i) for i in sentenc }
+  print(dic)
+DicNums("this is a very long dummy text")

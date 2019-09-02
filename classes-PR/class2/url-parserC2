@@ -1,0 +1,19 @@
+def pars(stri):
+ d={"scheme":" ",
+    "netloc":" ",
+    "path":" "}
+ st=stri.split('/',2)
+ 
+ d['scheme']=st[0]
+ d['netloc']=st[1]
+ d['path']=st[2]
+      
+      
+      
+     
+ print(d)
+     
+if __name__ == "__main__":  
+   stri = 'http/thisis.com/project/rails' 
+   pars(stri) 
+

@@ -1,0 +1,171 @@
+from random import randint, shuffle
+import random
+import sys
+import os
+def CellsNum():
+ numC=input("Please enter the number of cells to fill [0-80]\n")
+ if numC in range(0,81):
+     print("right")
+     return numC
+ else:
+     print("Error: invalid number of cells to fill")
+     CellsNum()
+
+def EmptyBoard():
+        i=0
+        j=0
+        sod = [[0 for i in range(10)] for j in range(10)]
+    
+        return(sod)
+  
+
+def printBoard(d):
+ 
+    for i in range(9):
+        print("\n")
+        for j in range(9): 
+            print d[i][j],
+         
+
+def printCmds(sd):
+    print("\n List of Commands \n")
+    print("Set X Y Z \n")
+    print("Hint x y \n")
+    print("Validate \n")
+    print("Restart\n")
+    print("Exit\n")
+    st=raw_input()
+    stri=st.split()
+    if(stri[0]=='Exit'):
+        sys.exit()
+    if(stri[0]=='Set'):
+        i=int(stri[1])
+        j=int(stri[2])
+        z=int(stri[3])
+        if (z in range(9)):
+            if (sd[i][j]=='-'):
+               sd[i][j]=int(stri[3])
+               print("Set Succesfully")
+               printBoard(sd)
+               printCmds(sd)
+    
+            else:    
+               print("fixed cell")
+        else:
+         printCmds(sd)
+    elif(stri[0]=='Hint'):
+        hint(sd,int(stri[1]),int(stri[2]))
+        printCmds(sd)
+    elif(stri[0]=='Validate'):
+       
+       check_sudoku(sd)
+       printCmds(sd)
+    elif(stri[0]=='Restart'):
+        python = sys.executable
+       
+        os.execv('C:\Users\Issa\Desktop\finalSoduk.py', [''])
+    else:
+        print('wrong entry')
+def solveSudoku(sdk): 
+      
+        
+    l=[0,0] 
+     
+    if(not empty(sdk,l)): 
+        return True
+
+    row=l[0] 
+    col=l[1] 
+
+    for num in range(1,10): 
+
+        if(checkLocation(sdk,row,col,num)): 
+
+            sdk[row][col]=num 
+ 
+            if(solveSudoku(sdk)): 
+                return True
+
+            sdk[row][col] = 0
+       
+    return False         
+def empty(sdk,l): 
+    for row in range(9): 
+        for col in range(9): 
+            if(sdk[row][col]==0): 
+                l[0]=row 
+                l[1]=col 
+                return True
+    return False
+ 
+def Crow(sdk,row,num): 
+    for i in range(9): 
+        if(sdk[row][i] == num): 
+            return True
+    return False
+  
+ 
+def Ccol(sdk,col,num): 
+    for i in range(9): 
+        if(sdk[i][col] == num): 
+            return True
+    return False
+
+def Cbox(sdk,row,col,num): 
+    for i in range(3): 
+        for j in range(3): 
+            if(sdk[i+row][j+col] == num): 
+                return True
+    return False
+ 
+def checkLocation(sdk,row,col,num): 
+  
+    return not Crow(sdk,row,num) and not Ccol(sdk,col,num) and not Cbox(sdk,row - row%3,col - col%3,num) 
+
+def hint(sd,x,z):
+    if(sd[x][z]=='-'):
+      for i in range(9):
+       if(checkLocation(sd,x,z,i)==True):
+         sd[x][z]=int(i)
+         print(i)
+         printBoard(sd)
+         
+def clearCells(s,n):
+    x=n
+    while(x!=0):
+       i= random.randint(0,8)
+       j= random.randint(0,8)
+       
+       if(s[i][j]=='-'):
+           pass
+       else:
+            x=x-1
+            s[i][j]='-'  
+    printBoard(s)
+     
+def check_sudoku(sd):
+   
+   print(solve_sudoku(sd))
+   for i in range(9):
+        for j in range(9):
+             print(check_location_is_safe(sd,i,j,sd[i][j]))
+          
+        
+    
+    
+ 
+if __name__=="__main__":
+     
+      num=CellsNum()
+      sodu=EmptyBoard()
+      solveSudoku(sodu)
+      clearCells(sodu,num)
+      choice=printCmds(sodu)
+      
+     
+    
+     
+      print("------------------------------------------------------")
+    
+    
+      

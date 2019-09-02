@@ -1,0 +1,17 @@
+def CountF(stri): 
+  
+    freq = {} 
+    for item in stri: 
+        if (item in freq): 
+            freq[item] += 1
+        else: 
+            freq[item] = 1
+  
+    for key, value in freq.items(): 
+        print ("% c : % d"%(key, value)) 
+  
+# Driver function 
+if __name__ == "__main__":  
+    stri ='this is a test'
+  
+    CountF(stri) 

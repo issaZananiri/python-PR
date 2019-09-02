@@ -1,0 +1,13 @@
+lives=10
+title='project'
+print(title)
+secre = "test"
+print(secre)
+count=0
+for elem in secre:
+    for j in title:
+     if elem==j:
+         title.replace(_,j)
+      count=+1
+      print(count)
+ 

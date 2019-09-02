@@ -1,0 +1,5 @@
+sentence='this is an amazing fantastic bad good example'
+print(sentence)
+s=sentence.split()
+j=[i for i in s if len(i) <= 3 ]
+print(j)

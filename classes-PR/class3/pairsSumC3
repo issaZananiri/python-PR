@@ -1,0 +1,12 @@
+def check(sum, m, n ): 
+    if (n == 0): 
+        return 1
+    elif (n < 0): 
+        return 0 
+    elif (m <=0 and n >= 1): 
+        return 0
+    else:
+     return check( sum, m - 1, n ) + check( sum, m, n-sum[m-1] )
+arr = [ 2, 3,4] 
+m = len(arr) 
+print(check(arr, m, 20))
