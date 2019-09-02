@@ -1,0 +1,148 @@
+from random import randint, shuffle
+import random
+import sys
+import os
+def CellsNum():
+ numC=input("Please enter the number of cells to fill [0-80]\n")
+ if numC in range(0,81):
+     print("right")
+     return numC
+ else:
+     print("Error: invalid number of cells to fill")
+     CellsNum()
+
+def EmptyBoard():
+        i=0
+        j=0
+        sod = [[0 for i in range(10)] for j in range(10)]
+    
+        return(sod)
+  
+
+def printBoard(sd):
+ 
+    for i in range(9):
+        print("\n")
+        for j in range(9): 
+            print sd[i][j],
+         
+
+def printCmds(sd):
+    print("\n List of Commands \n")
+    print("Set X Y Z \n")
+    print("Hint x y \n")
+    print("Validate \n")
+    print("Restart\n")
+    print("Exit\n")
+    st=raw_input()
+    stri=st.split()
+    if(stri[0]=='Exit'):
+        sys.exit()
+    if(stri[0]=='Set'):
+        i=int(stri[1])
+        j=int(stri[2])
+        z=int(stri[3])
+        if (z in range(9)):
+            if (sd[i][j]=='-'):
+               sd[i][j]=int(stri[3])
+               print("Set Succesfully")
+               printBoard(sd)
+            else:    
+               print("fixed cell")
+        else:
+         printCmds(sd)
+    elif(stri[0]=='Hint'):
+        print(stri[1])
+        printCmds(sd)
+    elif(stri[0]=='Validate'):
+        validate(sd)
+        printCmds(sd)
+    elif(stri[0]=='Restart'):
+        python = sys.executable
+       
+        os.execv('C:\Users\Issa\Desktop\finalSoduk.py', [''])
+    else:
+        print('wrong entry')
+
+def clearCells(s,n):
+    x=n
+    while(x!=0):
+       i= random.randint(0,8)
+       j= random.randint(0,8)
+       
+       if(s[i][j]=='-'):
+           pass
+       else:
+            x=x-1
+            s[i][j]='-'  
+    printBoard(s)
+     
+def fillBoard(s):
+
+  for i in range(0,81):
+    row=i//9
+    col=i%9
+    numberList=[1,2,3,4,5,6,7,8,9]
+    if s[row][col]==0: 
+      shuffle(numberList)      
+      for value in numberList:
+        if not(value in s[row]):
+          if not value in (s[0][col],s[1][col],s[2][col],s[3][col],s[4][col],s[5][col],s[6][col],s[7][col],s[8][col]):
+            square=[]
+            if row<3:
+              if col<3:
+                square=[s[i][0:3] for i in range(0,3)]
+              elif col<6:
+                square=[s[i][3:6] for i in range(0,3)]
+              else:  
+                square=[s[i][6:9] for i in range(0,3)]
+            elif row<6:
+              if col<3:
+                square=[s[i][0:3] for i in range(3,6)]
+              elif col<6:
+                square=[s[i][3:6] for i in range(3,6)]
+              else:  
+                square=[s[i][6:9] for i in range(3,6)]
+            else:
+              if col<3:
+                square=[s[i][0:3] for i in range(6,9)]
+              elif col<6:
+                square=[s[i][3:6] for i in range(6,9)]
+              else:  
+                square=[s[i][6:9] for i in range(6,9)]
+            if not value in (square[0] + square[1] + square[2]):
+              s[row][col]=value
+              if checkBoard(s):
+                return True
+                
+              else:
+                if fillBoard(s):
+                  return True
+      break
+  s[row][col]=0
+def checkBoard(br):
+  for row in range(0,9):
+      for col in range(0,9):
+        if br[row][col]==0:
+          return False  
+  return True 
+    
+    
+    
+            
+# Driver main function to test above functions 
+if __name__=="__main__":
+     
+      num=CellsNum()
+      sodu=EmptyBoard()
+      fillBoard(sodu)
+      clearCells(sodu,num)
+      choice=printCmds(sodu)
+      
+     
+    
+     
+      print("------------------------------------------------------")
+    
+    
+      
